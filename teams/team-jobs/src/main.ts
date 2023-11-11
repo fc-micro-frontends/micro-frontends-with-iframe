@@ -18,4 +18,13 @@ fetch("/jobs/api/recommendations.json")
           `<div><a href="${url}" target="_blank">${name}</a></div>`
       )
       .join("");
+
+    document
+      .querySelectorAll<HTMLAnchorElement>(".recommendations a")
+      .forEach((a) => {
+        a.addEventListener("click", (e) => {
+          e.preventDefault();
+          window.parent.location.href = a.href;
+        });
+      });
   });
